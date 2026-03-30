@@ -4,7 +4,7 @@ import sys
 import logging
 import requests
 from weather_utility import parse_weather_xml, publish_weather
-import uuid
+import secrets
 
 logging.basicConfig(
     level=logging.INFO,
@@ -19,7 +19,7 @@ USER = "anonymous"
 PASSWORD = "anonymous"
 EXCHANGE = "xpublic"
 
-rnd_6_chars = uuid.uuid4().hex[:6]
+rnd_6_chars = secrets.token_hex(3)
 QUEUE_NAME = f"q_anonymous.subscribe.citypage.{rnd_6_chars}company2ari.ca"
 SUBTOPIC = "#.WXO-DD.citypage_weather.ON.#"
 
