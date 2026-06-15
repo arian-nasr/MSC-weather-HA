@@ -23,7 +23,8 @@ def parse_weather_xml(source) -> dict | None:
         tree = ET.parse(io.BytesIO(source))
         root = tree.getroot()
         current = root.find('currentConditions')
-        if current is None: return None
+        if current is None:
+            return None
 
         wind_speed_str = current.findtext('wind/speed')
         if wind_speed_str == "calm":
@@ -136,7 +137,8 @@ def setup_ha_discovery(client, data):
 
 
 def publish_weather(data):
-    if not data: return
+    if not data:
+        return
 
     client = mqtt.Client()
     try:
