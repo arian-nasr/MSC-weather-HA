@@ -24,7 +24,6 @@ QUEUE_NAME = f"q_anonymous.subscribe.citypage.{rnd_6_chars}company2ari.ca"
 SUBTOPIC = "#.WXO-DD.citypage_weather.ON.#"
 
 def on_message(message):
-    routing_key = message.delivery_info.get('routing_key')
     body = message.body.decode('utf-8') if isinstance(message.body, bytes) else message.body
     
     parts = body.split()
@@ -92,7 +91,7 @@ def main():
             conn.drain_events()
 
     except KeyboardInterrupt:
-        logger.info(f"Stopping script...")
+        logger.info("Stopping script...")
         sys.exit(0)
     except Exception as e:
         logger.error(f"An error occurred: {e}")
