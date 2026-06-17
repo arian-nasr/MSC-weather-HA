@@ -94,7 +94,7 @@ def setup_ha_discovery(client, data):
             "id": "wind_b",
             "name": "Wind Bearing",
             "class": "wind_direction",
-            "state_class": "measurement",
+            "state_class": "measurement_angle",
             "unit": "°",
             "key": "wind_bearing"
         },
